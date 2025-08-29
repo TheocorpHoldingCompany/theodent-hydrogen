@@ -1,0 +1,730 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  background-color: #fefcf3 !important;
+}
+
+select {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+a:hover {
+  color: #cc8a52;
+}
+
+.acumin-bold {
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal;
+}
+
+.acumin-semibold {
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 600 !important;
+  font-style: normal;
+}
+
+.acumin-medium {
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 500 !important;
+  font-style: normal;
+}
+
+.acumin-regular {
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal;
+}
+
+/* Tokens */
+:root {
+  --color-primary: 20 20 20; /* Text, buttons, etc. */
+  --color-contrast: 250 250 249; /* Backgrounds, borders, etc. */
+  --color-accent: 191 72 0; /* Labels like "On sale" */
+  --font-size-fine: 0.75rem; /* text-xs */
+  --font-size-copy: 1rem; /* text-base */
+  --font-size-lead: 1.125rem; /* text-lg */
+  --font-size-heading: 2rem; /* text-2xl */
+  --font-size-display: 3rem; /* text-4xl */
+  --color-shop-pay: #5a31f4;
+  --shop-pay-button--width: 100%; /* Sets the width for the shop-pay-button web component */
+  --height-nav: 3rem;
+  --screen-height: 100vh;
+  --screen-height-dynamic: 100vh;
+
+  @media (min-width: 32em) {
+    --height-nav: 4rem;
+  }
+  @media (min-width: 48em) {
+    --height-nav: 6rem;
+    --font-size-heading: 2.25rem; /* text-4xl */
+    --font-size-display: 3.75rem; /* text-6xl */
+  }
+  @supports (height: 100svh) {
+    --screen-height: 100svh;
+  }
+  @supports (height: 100dvh) {
+    --screen-height-dynamic: 100dvh;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: 250 250 250;
+    --color-contrast: 32 33 36;
+    --color-accent: 235 86 40;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+shop-pay-button {
+  width: 100%;
+  height: 3rem;
+  display: table;
+}
+
+@layer base {
+  * {
+    font-variant-ligatures: none;
+  }
+
+  body {
+    @apply antialiased text-primary/90 bg-contrast border-primary/10;
+  }
+
+  html {
+    scroll-padding-top: 10rem;
+  }
+
+  model-viewer::part(default-progress-mask) {
+    display: none;
+  }
+
+  model-viewer::part(default-progress-bar) {
+    display: none;
+  }
+
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  .prose {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      &:first-child {
+        @apply mt-0;
+      }
+    }
+  }
+}
+
+@layer components {
+  .article {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-sans text-primary;
+    }
+    @apply mb-12 font-serif prose mx-auto grid justify-center text-primary;
+    p,
+    ul,
+    li {
+      @apply mb-4 text-lg;
+    }
+    img {
+      @apply md:-mx-8 lg:-mx-16;
+
+      @media (min-width: 48em) {
+        width: calc(100% + 4rem);
+        max-width: 100vw;
+      }
+      @media (min-width: 64em) {
+        width: calc(100% + 8rem);
+      }
+    }
+  }
+
+  .swimlane {
+    @apply grid snap-mandatory grid-flow-col snap-x w-full gap-4 scroll-px-6 px-6 pb-4 overflow-x-scroll justify-start;
+  }
+}
+
+@layer utilities {
+  .fadeIn {
+    opacity: 0;
+    animation: fadeInAnimation ease 500ms forwards;
+  }
+
+  .hiddenScroll {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .strike {
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 108%;
+      height: 1.5px;
+      left: -4%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgb(var(--color-primary));
+      box-shadow: 0.5px 0.5px 0px 0.5px rgb(var(--color-contrast));
+    }
+  }
+
+  .card-image {
+    @apply relative overflow-clip flex justify-center items-center;
+    &::before {
+      content: ' ';
+      @apply z-10 absolute block top-0 left-0 w-full h-full shadow-border;
+    }
+    img {
+      @apply object-cover w-full aspect-[inherit];
+    }
+  }
+}
+
+.theo-h1 {
+  font-size: 46px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  line-height: 52px;
+  color: #2a1b16;
+}
+
+.theo-info-h1 {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+@media screen and (max-width: 480px) {
+  .theo-h1 {
+    font-size: 32px;
+    line-height: 44px;
+  }
+  .theo-info-h1 {
+    font-size: 32px;
+    line-height: 44px;
+  }
+}
+
+.theo-h2 {
+  font-size: 35px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none !important;
+  color: #2a1b16;
+}
+
+.theo-h3 {
+  font-size: 16px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400;
+  font-style: normal !important;
+  line-height: 25.6px;
+  color: #2a1b16;
+}
+
+.theo-p {
+  font-size: 16px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  color: #2a1b16;
+}
+
+.theo-btn {
+  /* padding: 13px 60px; */
+  border: 1.5px solid #2a1b16;
+  color: #2a1b16;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+  cursor: pointer;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  outline: none;
+}
+
+@media screen and (min-width: 767px) {
+  .leaflet-prose {
+    width: 100%;
+    max-width: 750px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .theo-btn {
+    padding: 12px 6px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.theo-btn:hover {
+  background: #2a1b16;
+  color: #fefcf3;
+}
+
+.header-btn {
+  color: #fefcf3;
+  font-size: 16px;
+  line-height: 18px;
+  /* padding-left: 36px;
+  padding-right: 36px; */
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 500;
+  font-style: normal !important;
+  cursor: pointer;
+  padding-top: 3px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.275em;
+}
+
+.header-btn:hover {
+  font-weight: 700 !important;
+  color: white;
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+  text-decoration: none;
+  color: #2a1b16;
+}
+
+.hero-img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+  z-index: 5;
+}
+
+.hero-imgSm {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+}
+
+.hero-imgMd {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 4;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 420px;
+  z-index: 6;
+}
+
+.hero-btn {
+  width: 300px;
+}
+
+.banner-content {
+  max-width: 500px;
+}
+
+.theo-footer {
+  background: #004225;
+  color: #fefcf3;
+  height: 570px;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.footer-section1 {
+  /* width: 50% */
+}
+
+.footer-section2 {
+  /* width: 25%; */
+  border-left: 1px solid #cc8a52;
+  border-right: 1px solid #cc8a52;
+  height: 100%;
+}
+
+.footer-section3 {
+  /* width: 25% */
+}
+
+.page-header-img {
+  width: 100%;
+  /* max-width: 920px!important */
+}
+
+.page-header-img-sm {
+  width: 100%;
+  max-width: 920px;
+  display: none;
+}
+
+.theo-footer-input-wrap {
+  width: 90%;
+}
+
+.footer-section4 {
+  width: 100%;
+  height: 70px;
+  background: #fefcf3;
+}
+
+.swimline {
+  margin-top: 70px;
+}
+
+.swimline-title {
+  margin-bottom: 30px;
+}
+
+.swimline-img {
+  width: 90%;
+  /* max-width: 220px; */
+  object-fit: contain;
+}
+
+.swimline-btn {
+  width: 90%;
+}
+
+.theo-footer-btn {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fefcf3;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.theo-footer-btn:hover {
+  color: #cc8a52 !important;
+  text-decoration: underline !important;
+}
+
+@media screen and (max-width: 991px) {
+  .theo-footer-input-wrap {
+    width: 100%;
+  }
+  .theo-footer {
+    height: 1170px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .footer-section1 {
+    height: 300px;
+  }
+  .footer-section2 {
+    height: 380px;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #cc8a52;
+    border-bottom: 1px solid #cc8a52;
+  }
+  .footer-section3 {
+    height: 380px;
+  }
+  .footer-section4 {
+    height: 120px;
+  }
+}
+
+.cart-padding {
+  padding: 24px 30px 30px 30px;
+}
+
+.hero {
+  width: 100%;
+  color: #2a1b16;
+  position: relative;
+  text-decoration: none;
+}
+
+.hero-content {
+  padding-bottom: 40px;
+}
+
+@media screen and (min-width: 992px) {
+  .hero {
+    height: calc(100vh - 164px);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .hero {
+    min-height: calc(100vh - 164px);
+  }
+  .landing-video {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .mute-btn {
+    top: 20px;
+    right: 20px;
+    max-width: 150px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero-btn {
+    width: 100%;
+  }
+  .swimline {
+    margin-top: 50px;
+  }
+  .swimline-title {
+    margin-bottom: 0px;
+  }
+  .swimline-img {
+    /* max-width: 180px; */
+    margin-top: 18px;
+  }
+  .swimline-btn {
+    width: 100%;
+  }
+  .cart-padding {
+    padding: 20px;
+  }
+  .page-header-img {
+    display: none;
+  }
+  .page-header-img-sm {
+    display: flex;
+  }
+  .cart-summary-pd {
+    padding-bottom: 56px;
+  }
+  .mute-btn {
+    top: -50px;
+    right: 0px;
+    width: 100%;
+  }
+}
+
+.theo-footer-header {
+  font-family: acumin-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 0.34em;
+}
+
+.theo-input {
+  width: 100%;
+  height: 48px;
+  max-width: 380px;
+  border: none;
+  outline: none;
+  color: black;
+  padding-left: 12px;
+  border-radius: 0px !important;
+}
+
+.theo-footer-subscribe-btn {
+  height: 48px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background: #cc8a52;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  flex-shrink: 0;
+}
+
+.theo-footer-icon:hover {
+  opacity: 0.75;
+}
+
+.header-dropdown-btn {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a1b16;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-family: acumin-pro, sans-serif !important;
+  text-decoration: none !important;
+  letter-spacing: 0.15em;
+}
+
+.header-dropdown-btn:hover {
+  text-decoration: underline !important;
+  color: #2a1b16;
+}
+
+.pages-h1 {
+  font-size: 34px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 48px;
+  color: #2a1b16;
+}
+.pages-h2 {
+  font-size: 22px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 600 !important;
+  font-style: normal;
+  color: #2a1b16;
+}
+
+.pages-h3 {
+  font-size: 20px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  color: #2a1b16;
+}
+
+.pages-pre-header {
+  font-size: 18px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  color: #2a1b16;
+}
+
+.pages-p {
+  font-size: 16px;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  color: #2a1b16;
+}
+
+.footer-pp-link {
+  color: #2a1b16;
+  text-decoration: none;
+}
+
+.footer-pp-link:hover {
+  color: #2a1b16;
+  text-decoration: underline;
+}
+
+.clinical ul li::before {
+  content: '•';
+  color: #2a1b16;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.5em;
+  /* margin-left: -1.5em;  */
+}
+
+.blog p {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #2a1b16;
+}
+
+.blog ul {
+  list-style-type: circle;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #2a1b16;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* .blog h1 {
+  font-size: 34px;
+  line-height: 48px;
+  color: #2A1B16;
+  font-family: acumin-pro, sans-serif!important;
+  font-weight: 400!important;
+  font-style: normal!important;
+} */
+
+.blog h3 {
+  font-size: 22px;
+  font-style: normal;
+  color: #2a1b16;
+  font-family: acumin-pro, sans-serif !important;
+  font-weight: 600 !important;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #fefcf3 !important;
+}
+
+.theo-cart {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.theo-cart::-webkit-scrollbar {
+  display: none;
+}
+
+.progus-store-locator {
+  height: 600px;
+}
+

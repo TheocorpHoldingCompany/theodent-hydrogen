@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2A1B16" />
+    <title>Theodent Toothpaste</title>
+    <link rel="stylesheet" href="/src/styles/index.css" />
+    <link rel="preconnect" href="https://cdn.shopify.com" />
+    <link rel="preconnect" href="https://shop.app/" />
+    <!-- <link rel="preconnect" href="https://hydrogen-preview.myshopify.com/" /> -->
+    <link rel="stylesheet" href="https://use.typekit.net/jrz8ykg.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <!-- crisp integration -->
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="d0a91eba-fac3-401d-a21a-653c669ca40f";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-T9CQT4D9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'GT-T9CQT4D9');
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/entry.client.jsx"></script>
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=PsqgKv"></script>
+    <script async src="//loox.io/widget/loox.js?shop=theodent.myshopify.com"></script>
+    <script>
+      (function (p, r, o, g, u, s) {
+        var a = p.createElement(r);
+        var b = `?shop=theodent.myshopify.com`;
+        a.src = o + b;
+        a.allowfullscreen = !0;
+        a.allow = "geolocation";
+        a.frameborder = 0;
+        a.setAttribute("frameBorder", "0");
+        a.setAttribute("allowfullscreen", "");
+        a.width = "100%";
+        a.height = "500px";
+        p.querySelector("#progus-store-locator").appendChild(a);
+        window.addEventListener("message", (e) => {
+          if (e.data.pslheight) {
+            a.style.height = e.data.pslheight;
+          }
+        });
+      })(document, "iframe", "https://sl-widget.proguscommerce.com/main");
+    </script>
+  </body>
+</html>
